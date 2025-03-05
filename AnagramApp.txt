@@ -1,0 +1,46 @@
+package anagramApp;
+import java.util.Arrays;
+import java.util.Scanner;
+public class AnagramChecker {
+// TODO Auto-generated method 
+	public static boolean isAnagram(String str1, String str2) {
+        // Remove spaces and convert to lower case
+        str1 = str1.replaceAll("\\s", "").toLowerCase();
+        str2 = str2.replaceAll("\\s", "").toLowerCase();
+
+        // If lengths are different, they are not anagrams
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Convert strings to char arrays and sort them
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        // Compare sorted arrays
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input
+        System.out.print("Enter first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.print("Enter second string: ");
+        String str2 = scanner.nextLine();
+
+        // ✅ Make sure this method exists before calling it
+        if (isAnagram(str1, str2)) {
+            System.out.println("Output: true (They are anagrams)");
+        } else {
+            System.out.println("Output: false (Not anagrams)");
+        }
+
+        scanner.close();
+    }
+}
